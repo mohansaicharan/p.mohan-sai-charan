@@ -1,1 +1,30 @@
-# p.mohan-sai-charan
+Name. P Mohan Sai Charan
+
+Roll no:26000856
+
+Branch : Cse(core)
+
+Section:4
+
+
+#TOPICS
+
+1:University Scholarship Allocation
+
+2:Progressive Electricity Billing
+
+3:Hospital Billing and Patient Classification
+
+4:Employee Payroll and Deduction Analysis
+
+5:Multi-Plan Telecommunications Cost Optimization
+
+6:Railway Fare and Reservation Calculator
+
+7:Retail Billing with Multiple Discount Rules
+
+8:Manufacturing Cost and Profitability Analysis
+
+9:Multi-Currency Travel Budget Analysis
+
+10:Campus Event Financial Planning
