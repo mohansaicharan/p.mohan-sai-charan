@@ -1,0 +1,57 @@
+print("MULTI-CURRENCY TRAVEL BUDGET ANALYSIS")
+
+budget = float(input("Enter travel budget in INR: Rs. "))
+n = int(input("Enter number of expenses: "))
+
+total_expenses = 0
+
+# Example exchange rates
+usd_rate = 84.0
+eur_rate = 92.0
+gbp_rate = 110.0
+inr_rate = 1.0
+
+print("\nAvailable currencies:")
+print("INR - Indian Rupee")
+print("USD - US Dollar")
+print("EUR - Euro")
+print("GBP - British Pound")
+
+for i in range(n):
+    print("\nExpense", i + 1)
+
+    name = input("Enter expense name: ")
+    amount = float(input("Enter expense amount: "))
+    currency = input("Enter currency (INR/USD/EUR/GBP): ").upper()
+
+    if currency == "INR":
+        converted_amount = amount * inr_rate
+    elif currency == "USD":
+        converted_amount = amount * usd_rate
+    elif currency == "EUR":
+        converted_amount = amount * eur_rate
+    elif currency == "GBP":
+        converted_amount = amount * gbp_rate
+    else:
+        print("Invalid currency! Expense skipped.")
+        continue
+
+    total_expenses += converted_amount
+
+    print("Expense Name:", name)
+    print("Amount in INR: Rs.", round(converted_amount, 2))
+
+print("\n----- TRAVEL BUDGET REPORT -----")
+print("Available Budget: Rs.", round(budget, 2))
+print("Total Expenses: Rs.", round(total_expenses, 2))
+
+if total_expenses < budget:
+    balance = budget - total_expenses
+    print("Remaining Balance: Rs.", round(balance, 2))
+elif total_expenses > budget:
+    excess = total_expenses - budget
+    print("Budget Exceeded By: Rs.", round(excess, 2))
+else:
+    print("Budget Fully Used.")
+
+print("--------------------------------")

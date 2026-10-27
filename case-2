@@ -1,0 +1,76 @@
+```python
+# Progressive Electricity Billing
+
+bills = []
+units_list = []
+
+n = int(input("Enter number of months: "))
+
+for i in range(n):
+    print("\nMonth", i + 1)
+
+    units = float(input("Enter electricity units consumed: "))
+    units_list.append(units)
+
+    # Calculate energy charges using slabs
+    if units <= 100:
+        energy = units * 2
+
+    elif units <= 200:
+        energy = (100 * 2) + ((units - 100) * 3)
+
+    else:
+        energy = (100 * 2) + (100 * 3) + ((units - 200) * 5)
+
+    # Fixed charges
+    fixed = 50
+
+    # Surcharge: 5% of energy charges
+    surcharge = energy * 0.05
+
+    # Rebate for consumption below 100 units
+    if units < 100:
+        rebate = 20
+    else:
+        rebate = 0
+
+    # Calculate final bill
+    total = energy + fixed + surcharge - rebate
+
+    bills.append(total)
+
+    print("Energy Charges: Rs.", round(energy, 2))
+    print("Fixed Charges: Rs.", fixed)
+    print("Surcharge: Rs.", round(surcharge, 2))
+    print("Rebate: Rs.", rebate)
+    print("Final Bill: Rs.", round(total, 2))
+
+
+# Compare monthly bills
+print("\n===== MONTHLY BILL COMPARISON =====")
+
+for i in range(n):
+    print("Month", i + 1, "- Rs.", round(bills[i], 2))
+
+    if i > 0:
+        previous = bills[i - 1]
+        current = bills[i]
+
+        if previous > 0:
+            increase = ((current - previous) / previous) * 100
+
+            if increase > 30:
+                print("Unusual increase detected!")
+                print("Increase:", round(increase, 2), "%")
+
+            elif increase > 0:
+                print("Bill increased by",
+                      round(increase, 2), "%")
+
+            elif increase < 0:
+                print("Bill decreased by",
+                      round(abs(increase), 2), "%")
+
+            else:
+                print("Bill remained unchanged.")
+```

@@ -1,0 +1,55 @@
+print("RETAIL BILLING SYSTEM")
+
+n = int(input("Enter number of products: "))
+
+subtotal = 0
+
+for i in range(n):
+    print("\nProduct", i + 1)
+
+    name = input("Enter product name: ")
+    price = float(input("Enter product price: Rs. "))
+    quantity = int(input("Enter quantity: "))
+
+    amount = price * quantity
+    subtotal += amount
+
+    print("Product Amount: Rs.", round(amount, 2))
+
+print("\nSubtotal: Rs.", round(subtotal, 2))
+
+# Purchase discount
+if subtotal >= 5000:
+    purchase_discount = subtotal * 0.10
+elif subtotal >= 2000:
+    purchase_discount = subtotal * 0.05
+else:
+    purchase_discount = 0
+
+amount_after_discount = subtotal - purchase_discount
+
+# Membership discount
+member = input("Is the customer a member? (yes/no): ").lower()
+
+if member == "yes":
+    membership_discount = amount_after_discount * 0.05
+else:
+    membership_discount = 0
+
+discounted_amount = amount_after_discount - membership_discount
+
+# GST calculation
+gst = discounted_amount * 0.18
+
+final_bill = discounted_amount + gst
+
+total_discount = purchase_discount + membership_discount
+
+print("\n----- FINAL BILL -----")
+print("Subtotal: Rs.", round(subtotal, 2))
+print("Purchase Discount: Rs.", round(purchase_discount, 2))
+print("Membership Discount: Rs.", round(membership_discount, 2))
+print("Total Discount: Rs.", round(total_discount, 2))
+print("GST (18%): Rs.", round(gst, 2))
+print("Final Payable Amount: Rs.", round(final_bill, 2))
+print("----------------------")

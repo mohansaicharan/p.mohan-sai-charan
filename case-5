@@ -1,0 +1,86 @@
+```python
+# Multi-Plan Telecommunications Cost Optimization
+
+required_data = float(input("Enter required data (GB): "))
+required_calls = int(input("Enter required call minutes: "))
+required_sms = int(input("Enter required SMS count: "))
+required_validity = int(input("Enter required validity (days): "))
+budget = float(input("Enter your budget (Rs.): "))
+
+# Plan details:
+# Name, price, data GB, call minutes, SMS, validity days
+
+plans = [
+    {
+        "name": "Basic",
+        "price": 199,
+        "data": 2,
+        "calls": 300,
+        "sms": 100,
+        "validity": 28
+    },
+    {
+        "name": "Standard",
+        "price": 299,
+        "data": 10,
+        "calls": 600,
+        "sms": 200,
+        "validity": 56
+    },
+    {
+        "name": "Premium",
+        "price": 499,
+        "data": 30,
+        "calls": 1000,
+        "sms": 500,
+        "validity": 84
+    }
+]
+
+eligible_plans = []
+
+# Additional usage rates
+data_rate = 20       # Rs. per extra GB
+call_rate = 0.50     # Rs. per extra minute
+sms_rate = 0.25      # Rs. per extra SMS
+
+if (required_data < 0 or required_calls < 0 or
+        required_sms < 0 or required_validity <= 0 or
+        budget < 0):
+
+    print("Invalid input. Enter valid non-negative values.")
+
+else:
+    print("\n===== PLAN COST COMPARISON =====")
+
+    for plan in plans:
+
+        extra_data = max(0, required_data - plan["data"])
+        extra_calls = max(0, required_calls - plan["calls"])
+        extra_sms = max(0, required_sms - plan["sms"])
+
+        data_charge = extra_data * data_rate
+        call_charge = extra_calls * call_rate
+        sms_charge = extra_sms * sms_rate
+
+        total_cost = (
+            plan["price"] +
+            data_charge +
+            call_charge +
+            sms_charge
+        )
+
+        print("\nPlan:", plan["name"])
+        print("Base Price: Rs.", plan["price"])
+        print("Extra Data Charges: Rs.", round(data_charge, 2))
+        print("Extra Call Charges: Rs.", round(call_charge, 2))
+        print("Extra SMS Charges: Rs.", round(sms_charge, 2))
+        print("Total Cost: Rs.", round(total_cost, 2))
+
+        # A plan must meet all requirements and budget.
+        if (plan["data"] >= required_data and
+                plan["calls"] >= required_calls and
+                plan["sms"] >= required_sms and
+                plan["validity"] >= required_validity and
+                to
+```

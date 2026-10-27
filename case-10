@@ -1,0 +1,57 @@
+print("CAMPUS EVENT FINANCIAL PLANNING")
+
+event_name = input("Enter event name: ")
+
+budget = float(input("Enter available budget: Rs. "))
+attendees = int(input("Enter number of attendees: "))
+ticket_price = float(input("Enter ticket price per attendee: Rs. "))
+
+sponsorship = float(input("Enter sponsorship income: Rs. "))
+
+venue = float(input("Enter venue expenses: Rs. "))
+food = float(input("Enter food expenses: Rs. "))
+decoration = float(input("Enter decoration expenses: Rs. "))
+transport = float(input("Enter transportation expenses: Rs. "))
+other = float(input("Enter other expenses: Rs. "))
+
+# Calculate income
+ticket_income = attendees * ticket_price
+total_income = ticket_income + sponsorship
+
+# Calculate expenses
+total_expenses = venue + food + decoration + transport + other
+
+# Calculate profit or loss
+profit_or_loss = total_income - total_expenses
+
+print("\n----- EVENT FINANCIAL REPORT -----")
+print("Event Name:", event_name)
+print("Number of Attendees:", attendees)
+
+print("Ticket Income: Rs.", round(ticket_income, 2))
+print("Sponsorship Income: Rs.", round(sponsorship, 2))
+print("Total Income: Rs.", round(total_income, 2))
+
+print("Venue Expenses: Rs.", round(venue, 2))
+print("Food Expenses: Rs.", round(food, 2))
+print("Decoration Expenses: Rs.", round(decoration, 2))
+print("Transportation Expenses: Rs.", round(transport, 2))
+print("Other Expenses: Rs.", round(other, 2))
+
+print("Total Expenses: Rs.", round(total_expenses, 2))
+print("Available Budget: Rs.", round(budget, 2))
+
+if total_expenses <= budget:
+    print("Budget Status: Within Budget")
+else:
+    print("Budget Status: Budget Exceeded")
+    print("Excess Amount: Rs.", round(total_expenses - budget, 2))
+
+if profit_or_loss > 0:
+    print("Event Profit: Rs.", round(profit_or_loss, 2))
+elif profit_or_loss < 0:
+    print("Event Loss: Rs.", round(abs(profit_or_loss), 2))
+else:
+    print("Event Result: Break-even")
+
+print("----------------------------------")

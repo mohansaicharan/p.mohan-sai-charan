@@ -1,0 +1,84 @@
+Python 3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+```python
+# University Scholarship Allocation
+
+students = []
+eligible_students = []
+ineligible_students = []
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    print("\nEnter details for Student", i + 1)
+
+    name = input("Student name: ")
+    aggregate = float(input("Aggregate marks (%): "))
+
+    subject1 = float(input("Subject 1 marks (%): "))
+    subject2 = float(input("Subject 2 marks (%): "))
+    subject3 = float(input("Subject 3 marks (%): "))
+
+    attendance = float(input("Attendance (%): "))
+    income = float(input("Annual family income (Rs.): "))
+
+    student = {
+        "name": name,
+        "aggregate": aggregate,
+        "attendance": attendance,
+        "income": income
+    }
+
+    if (aggregate >= 75 and
+        subject1 >= 60 and
+        subject2 >= 60 and
+        subject3 >= 60 and
+        attendance >= 75 and
+        income <= 250000):
+
+        eligible_students.append(student)
+        print("Status: Eligible")
+
+    else:
+        ineligible_students.append(student)
+        print("Status: Not Eligible")
+
+... # Ranking:
+... # 1. Higher aggregate marks
+... # 2. Higher attendance
+... # 3. Lower family income
+... 
+... eligible_students.sort(
+...     key=lambda s: (
+...         -s["aggregate"],
+...         -s["attendance"],
+...         s["income"]
+...     )
+... )
+... 
+... print("\n===== SCHOLARSHIP RANKING =====")
+... 
+... if len(eligible_students) == 0:
+...     print("No eligible students found.")
+... 
+... else:
+...     rank = 1
+... 
+...     for student in eligible_students:
+...         print("\nRank:", rank)
+...         print("Name:", student["name"])
+...         print("Aggregate:", student["aggregate"], "%")
+...         print("Attendance:", student["attendance"], "%")
+...         print("Family Income: Rs.", student["income"])
+... 
+...         rank += 1
+... 
+... print("\n===== INELIGIBLE STUDENTS =====")
+... 
+... if len(ineligible_students) == 0:
+...     print("No ineligible students.")
+... 
+... else:
+...     for student in ineligible_students:
+...         print(student["name"])
+... ```
