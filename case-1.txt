@@ -43,12 +43,12 @@ for i in range(n):
         ineligible_students.append(student)
         print("Status: Not Eligible")
 
-... # Ranking:
-... # 1. Higher aggregate marks
-... # 2. Higher attendance
-... # 3. Lower family income
-... 
-... eligible_students.sort(
+# Ranking:
+ # 1. Higher aggregate marks
+ # 2. Higher attendance
+ # 3. Lower family income
+ 
+ eligible_students.sort(
 ...     key=lambda s: (
 ...         -s["aggregate"],
 ...         -s["attendance"],
