@@ -49,7 +49,7 @@ for i in range(n):
  # 3. Lower family income
  
  eligible_students.sort(
-...     key=lambda s: (
+    key=lambda s: (
 ...         -s["aggregate"],
 ...         -s["attendance"],
 ...         s["income"]
